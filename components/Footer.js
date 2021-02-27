@@ -24,12 +24,10 @@ const Footer = () => {
               fontSize="sm"
               fontWeight="semibold"
             >
-            Anuj Verma
+              Anuj Verma
             </Link>
           </Text>
-          <Text fontSize="xs">
-            Released under the MIT License.
-          </Text>
+          <Text fontSize="xs">Released under the MIT License.</Text>
           <Text fontSize="xs">
             &copy; {year}, Shopping Cart. All Rights Reserved.
           </Text>

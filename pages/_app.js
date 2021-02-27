@@ -1,9 +1,9 @@
-import { Provider } from 'react-redux'
-import { useStore } from '../redux/store'
-import { ChakraProvider } from "@chakra-ui/react"
+import { Provider } from "react-redux";
+import { useStore } from "../redux/store";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function App({ Component, pageProps }) {
-  const store = useStore(pageProps.initialReduxState)
+  const store = useStore(pageProps.initialReduxState);
 
   return (
     <Provider store={store}>
@@ -11,5 +11,5 @@ export default function App({ Component, pageProps }) {
         <Component {...pageProps} />
       </ChakraProvider>
     </Provider>
-  )
+  );
 }

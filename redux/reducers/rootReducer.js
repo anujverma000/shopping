@@ -1,7 +1,7 @@
-import login from './login';
-import cart from './cart';
-import checkout from './checkout';
-import { combineReducers } from 'redux';
+import login from "./login";
+import cart from "./cart";
+import checkout from "./checkout";
+import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   login,
