@@ -1,11 +1,12 @@
-import { Box, Heading, Flex, Text, HStack } from "@chakra-ui/react";
+import { Box, Heading, Flex, Text, HStack, Badge } from "@chakra-ui/react";
 import { FaShoppingCart, FaPowerOff } from "react-icons/fa";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
 const Header = (props) => {
   const user = useSelector((state) => state.login.username);
-
+  const { products } = useSelector((state) => state.cart);
+  console.log(products)
   return (
     <Flex
       as="nav"
@@ -36,7 +37,7 @@ const Header = (props) => {
             cursor="pointer"
           >
             <FaShoppingCart size={16} px={10} />
-            <Text fontSize="sm">Cart</Text>
+            <Text fontSize="sm">Cart <Badge>{products.length? products.length : ''}</Badge></Text>
           </HStack>
         </Link>
 

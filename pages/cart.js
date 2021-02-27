@@ -21,7 +21,7 @@ const Cart = () => {
       title: `${quantity > 0 ? "Updated quantity" : 'Removed from cart'}`,
       description: product.title,
       status: `${quantity > 0 ? "success" : 'error'}`,
-      duration: 9000,
+      duration: 3000,
       isClosable: true,
     })
   };
