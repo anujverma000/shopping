@@ -10,7 +10,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 
-const Address = ({ userDetails, setUserDetails }) => {
+const Address = ({ userDetails, setUserDetails, showError = false }) => {
   return (
     <Box my={8} p={12} border={1} rounded="md" boxShadow="2xl">
       <HStack mb={8}>
@@ -18,6 +18,7 @@ const Address = ({ userDetails, setUserDetails }) => {
           <FormLabel>First name</FormLabel>
           <Input
             value={userDetails.firstName}
+            isInvalid={showError && !userDetails.firstName}
             onChange={(e) =>
               setUserDetails({ ...userDetails, firstName: e.target.value })
             }
@@ -28,6 +29,7 @@ const Address = ({ userDetails, setUserDetails }) => {
           <FormLabel>Last name</FormLabel>
           <Input
             value={userDetails.lastName}
+            isInvalid={showError && !userDetails.lastName}
             onChange={(e) =>
               setUserDetails({ ...userDetails, lastName: e.target.value })
             }
@@ -39,6 +41,7 @@ const Address = ({ userDetails, setUserDetails }) => {
         <FormLabel>Email address</FormLabel>
         <Input
           type="email"
+          isInvalid={showError && !userDetails.email}
           value={userDetails.email}
           onChange={(e) =>
             setUserDetails({ ...userDetails, email: e.target.value })
@@ -53,6 +56,7 @@ const Address = ({ userDetails, setUserDetails }) => {
           <InputLeftAddon children="+971" />
           <Input
             type="tel"
+            isInvalid={showError && !userDetails.phone}
             value={userDetails.phone}
             onChange={(e) =>
               setUserDetails({ ...userDetails, phone: e.target.value })
@@ -65,6 +69,7 @@ const Address = ({ userDetails, setUserDetails }) => {
         <FormLabel>Address</FormLabel>
         <Textarea
           value={userDetails.address}
+          isInvalid={showError && !userDetails.address}
           onChange={(e) =>
             setUserDetails({ ...userDetails, address: e.target.value })
           }

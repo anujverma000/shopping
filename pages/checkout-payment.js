@@ -6,9 +6,11 @@ import StepIndicator from "../components/StepIndicator";
 import { useRouter } from "next/router";
 import { updatePaymentDetails } from "../redux/actions/checkout";
 import { emptyCart } from "../redux/actions/cart";
+import { useState } from "react";
 
 const CheckoutPayment = () => {
   const dispatch = useDispatch();
+  const [showError, setShowError] = useState(false);
   const router = useRouter();
   const {
     checkout: { userDetails, paymentDetails },
@@ -25,6 +27,7 @@ const CheckoutPayment = () => {
       dispatch(emptyCart());
       router.push("/checkout-order");
     }
+    setShowError(true);
   };
 
   const saveOrderDetails = async () => {
@@ -49,6 +52,7 @@ const CheckoutPayment = () => {
       <Flex alignItems="center" direction="column">
         <Payment
           paymentDetails={paymentDetails}
+          showError={showError}
           setPaymentDetails={(paymentDetails) =>
             dispatch(updatePaymentDetails(paymentDetails))
           }

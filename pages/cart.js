@@ -1,4 +1,4 @@
-import { Button, Flex, Stack, Wrap, WrapItem } from "@chakra-ui/react";
+import { Button, Flex, Stack, useToast, Wrap, WrapItem } from "@chakra-ui/react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
@@ -9,12 +9,21 @@ import { UPDATE_PRODUCTS } from "../redux/actions/cart";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const toast = useToast()
   const handleProductUpdates = (product, quantity) => {
     product.quantity = quantity;
     dispatch({
       type: UPDATE_PRODUCTS,
       payload: product,
     });
+    toast({
+      position: "bottom-left",
+      title: `${quantity > 0 ? "Updated quantity" : 'Removed from cart'}`,
+      description: product.title,
+      status: `${quantity > 0 ? "success" : 'error'}`,
+      duration: 9000,
+      isClosable: true,
+    })
   };
   const { products } = useSelector((state) => state.cart);
 

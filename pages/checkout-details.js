@@ -11,6 +11,7 @@ const CheckoutDetails = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { userDetails } = useSelector((state) => state.checkout);
+  const [showError, setShowError] = useState(false);
   const onContinue = () => {
     dispatch(updateUserDetails(userDetails));
     let isEmpty = Object.values(userDetails).some(
@@ -19,6 +20,7 @@ const CheckoutDetails = () => {
     if (!isEmpty) {
       router.push("/checkout-payment");
     }
+    setShowError(true);
   };
   const [isMobile] = useMediaQuery("(max-width: 560px)");
   return (
@@ -27,6 +29,7 @@ const CheckoutDetails = () => {
       <Flex alignItems="center" direction="column">
         <Address
           userDetails={userDetails}
+          showError={showError}
           setUserDetails={(userDetails) =>
             dispatch(updateUserDetails(userDetails))
           }

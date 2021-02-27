@@ -8,7 +8,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 
-const Payment = ({ paymentDetails, setPaymentDetails }) => {
+const Payment = ({ paymentDetails, setPaymentDetails, showError=false }) => {
   const year = new Date().getFullYear();
   return (
     <Box
@@ -24,6 +24,7 @@ const Payment = ({ paymentDetails, setPaymentDetails }) => {
         <FormLabel>Name on card</FormLabel>
         <Input
           type="name_on_card"
+          isInvalid={showError && !paymentDetails.name}
           value={paymentDetails.name}
           onChange={(e) =>
             setPaymentDetails({ ...paymentDetails, name: e.target.value })
@@ -34,6 +35,7 @@ const Payment = ({ paymentDetails, setPaymentDetails }) => {
         <FormLabel>Card Number</FormLabel>
         <Input
           type="card_number"
+          isInvalid={showError && !paymentDetails.cardNumber}
           value={paymentDetails.cardNumber}
           onChange={(e) =>
             setPaymentDetails({ ...paymentDetails, cardNumber: e.target.value })
@@ -47,6 +49,7 @@ const Payment = ({ paymentDetails, setPaymentDetails }) => {
             <Select
               placeholder="Month"
               variant="filled"
+              isInvalid={showError && !paymentDetails.expiryMonth}
               defaultValue={paymentDetails.expiryMonth}
               onChange={(e) =>
                 setPaymentDetails({
@@ -64,6 +67,7 @@ const Payment = ({ paymentDetails, setPaymentDetails }) => {
             <Select
               placeholder="Year"
               variant="filled"
+              isInvalid={showError && !paymentDetails.expiryYear}
               defaultValue={paymentDetails.expiryYear}
               onChange={(e) =>
                 setPaymentDetails({
@@ -87,6 +91,7 @@ const Payment = ({ paymentDetails, setPaymentDetails }) => {
           <HStack justifyContent="space-between">
             <Input
               type="cvv"
+              isInvalid={showError && !paymentDetails.cvv}
               width="70px"
               value={paymentDetails.cvv}
               onChange={(e) =>

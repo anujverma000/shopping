@@ -18,6 +18,7 @@ import Invoice from "../components/Invoice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import { emptyCart } from "../redux/actions/cart";
 
 const CheckoutOrder = () => {
   const [isMobile] = useMediaQuery("(max-width: 560px)");
@@ -32,6 +33,7 @@ const CheckoutOrder = () => {
   const router = useRouter();
 
   const onContinue = () => {
+    dispatch(emptyCart());
     router.push("/home");
   };
   return (
