@@ -25,7 +25,6 @@ const QuantityCounter = ({
   };
 
   const updateQuantity = (value) => {
-    console.log(value, isNaN(value));
     if (value === "") {
       setQuantity(minQuantity);
       onChange(minQuantity);

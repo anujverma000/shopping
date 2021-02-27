@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 const Header = (props) => {
   const user = useSelector((state) => state.login.username);
   const { products } = useSelector((state) => state.cart);
-  console.log(products)
   return (
     <Flex
       as="nav"
