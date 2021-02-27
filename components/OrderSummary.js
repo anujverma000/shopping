@@ -1,6 +1,5 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react"
-import Link from "next/link";
-import { useDispatch, useSelector } from 'react-redux'
+import { Box, Flex, Text } from "@chakra-ui/react"
+import { useSelector } from 'react-redux'
 
 const OrderSummary = () => {
   const {products} = useSelector(state => state.cart);
@@ -9,7 +8,7 @@ const OrderSummary = () => {
   products.forEach(p => {
     subTotal = subTotal + ( p.quantity * p.price)
   });
-  const currency = products[0].currency;
+  const currency = products[0]?.currency || 'AED';
   const tax = 0;
 
   return (
